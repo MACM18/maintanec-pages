@@ -8,15 +8,12 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <!-- Background layers -->
-  <canvas id="particles-canvas"></canvas>
-  <div class="bg-grid"></div>
-  <div class="bg-glow bg-glow-1"></div>
-  <div class="bg-glow bg-glow-2"></div>
-  <div class="bg-glow bg-glow-3"></div>
+  <!-- Space background -->
+  <canvas id="space-canvas"></canvas>
+  <div class="bg-nebula bg-nebula-1"></div>
+  <div class="bg-nebula bg-nebula-2"></div>
 
   <div class="page-wrapper">
-
     <div class="error-code-hero">
       <span class="error-code-number" data-code="404">404</span>
     </div>
@@ -34,22 +31,23 @@
 
       <h1 class="error-title">This Page Doesn't Exist</h1>
       <p class="error-subtitle">
-        The URL you requested doesn't point to any resource on this server.
-        The page may have been moved, renamed, or permanently removed from our infrastructure.
+        The URL you requested doesn't match any resource on this server. This could mean the page was
+        moved to a new location, the link you followed is outdated, or the content was permanently
+        removed during a recent deployment.
       </p>
 
       <div class="steps-list">
         <div class="step-item">
           <div class="step-number">1</div>
-          <div class="step-text">Double-check the URL for typos or extra characters</div>
+          <div class="step-text">Double-check the URL for typos, extra slashes, or incorrect casing</div>
         </div>
         <div class="step-item">
           <div class="step-number">2</div>
-          <div class="step-text">If you followed a link, the destination may have been updated — try navigating from the homepage</div>
+          <div class="step-text">If you followed a link from another site, that link may be outdated — try navigating from the homepage instead</div>
         </div>
         <div class="step-item">
           <div class="step-number">3</div>
-          <div class="step-text">If the issue persists, contact support at <strong>macm.dev</strong></div>
+          <div class="step-text">Site owners: verify your application routes and static asset paths in your deployment configuration</div>
         </div>
       </div>
 
@@ -59,15 +57,7 @@
       </div>
     </div>
 
-    <div class="page-footer">
-      <div class="footer-links">
-        <a href="https://macm.dev">macm.dev</a>
-        <div class="footer-divider"></div>
-        <a href="https://macm.lk">macm.lk</a>
-      </div>
-      <div class="dev-meta">err:404 • not_found • macm infra</div>
-    </div>
-
+    <div class="dev-meta">macm • err:404 • not_found</div>
   </div>
 
   <script src="/js/particles.js"></script>

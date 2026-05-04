@@ -4,19 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MACM Infrastructure</title>
-  <meta name="description" content="MACM managed infrastructure node">
+  <meta name="description" content="MACM managed infrastructure node — active and operational">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <!-- Background layers -->
-  <canvas id="particles-canvas"></canvas>
-  <div class="bg-grid"></div>
-  <div class="bg-glow bg-glow-1"></div>
-  <div class="bg-glow bg-glow-2"></div>
-  <div class="bg-glow bg-glow-3"></div>
+  <!-- Space background -->
+  <canvas id="space-canvas"></canvas>
+  <div class="bg-nebula bg-nebula-1"></div>
+  <div class="bg-nebula bg-nebula-2"></div>
 
   <div class="page-wrapper">
-
     <div class="error-card">
       <div class="brand">
         <div class="brand-logo">M</div>
@@ -30,27 +27,16 @@
 
       <h1 class="error-title">Infrastructure Node Active</h1>
       <p class="error-subtitle">
-        You've reached a MACM infrastructure endpoint that's running normally.
-        This node is part of our distributed hosting network and doesn't serve public content directly.
+        You've reached a MACM infrastructure endpoint directly. This node is part of our distributed
+        hosting network and serves as a reverse proxy for managed applications. It doesn't host
+        public-facing content on its own — it routes traffic to the correct destination.
       </p>
 
-      <div class="info-grid">
-        <div class="info-box">
-          <span class="info-box-icon">🌐</span>
-          <div class="info-box-title">Network</div>
-          <div class="info-box-value">MACM Edge Network</div>
-        </div>
-        <div class="info-box">
-          <span class="info-box-icon">🛡️</span>
-          <div class="info-box-title">Status</div>
-          <div class="info-box-value">Healthy &amp; Protected</div>
-        </div>
-        <div class="info-box">
-          <span class="info-box-icon">⚡</span>
-          <div class="info-box-title">Region</div>
-          <div class="info-box-value">Auto-detected</div>
-        </div>
-      </div>
+      <p class="error-subtitle" style="margin-top: -0.5rem;">
+        If you're a site owner and seeing this page, your application may not be configured to receive
+        traffic on this domain yet. Check your Dokploy dashboard to verify your domain bindings
+        and deployment status.
+      </p>
 
       <div class="btn-group">
         <a href="https://macm.dev" class="btn btn-primary">Visit MACM.dev</a>
@@ -58,17 +44,7 @@
       </div>
     </div>
 
-    <div class="page-footer">
-      <div class="footer-links">
-        <a href="https://macm.dev">macm.dev</a>
-        <div class="footer-divider"></div>
-        <a href="https://macm.lk">macm.lk</a>
-        <div class="footer-divider"></div>
-        <a href="https://macm.dev">Managed Infrastructure</a>
-      </div>
-      <div class="dev-meta">node:index • http 200 • macm infra</div>
-    </div>
-
+    <div class="dev-meta">macm • edge-node • default</div>
   </div>
 
   <script src="/js/particles.js"></script>

@@ -8,15 +8,12 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <!-- Background layers -->
-  <canvas id="particles-canvas"></canvas>
-  <div class="bg-grid"></div>
-  <div class="bg-glow bg-glow-1"></div>
-  <div class="bg-glow bg-glow-2"></div>
-  <div class="bg-glow bg-glow-3"></div>
+  <!-- Space background -->
+  <canvas id="space-canvas"></canvas>
+  <div class="bg-nebula bg-nebula-1"></div>
+  <div class="bg-nebula bg-nebula-2"></div>
 
   <div class="page-wrapper">
-
     <div class="error-code-hero">
       <span class="error-code-number" data-code="502">502</span>
     </div>
@@ -34,36 +31,33 @@
 
       <h1 class="error-title">Upstream Connection Failed</h1>
       <p class="error-subtitle">
-        Our edge server received an invalid response from the upstream application server.
-        This typically means the backend service is temporarily unreachable, restarting, or overloaded.
+        Our reverse proxy received an invalid or empty response from the upstream application server.
+        This usually means the application container has crashed, is still starting up after a deployment,
+        or has run out of memory. Only this specific application is affected — other services on the
+        MACM network continue to operate normally.
       </p>
 
       <div class="info-grid">
         <div class="info-box">
           <span class="info-box-icon">🔗</span>
-          <div class="info-box-title">Cause</div>
-          <div class="info-box-value">The reverse proxy couldn't establish a valid connection to the origin server</div>
+          <div class="info-box-title">What Failed</div>
+          <div class="info-box-value">The proxy could not establish a valid TCP connection to the origin container</div>
         </div>
         <div class="info-box">
           <span class="info-box-icon">🔄</span>
           <div class="info-box-title">Auto-Recovery</div>
-          <div class="info-box-value">Health checks run every 30s — the backend will be restored automatically</div>
-        </div>
-        <div class="info-box">
-          <span class="info-box-icon">📊</span>
-          <div class="info-box-title">Impact</div>
-          <div class="info-box-value">Only this specific application is affected — other MACM services are unimpacted</div>
+          <div class="info-box-value">Health checks run every 30 seconds — failed containers are restarted automatically</div>
         </div>
       </div>
 
       <div class="steps-list">
         <div class="step-item">
           <div class="step-number">1</div>
-          <div class="step-text">Refresh the page — the application may have restarted and recovered already</div>
+          <div class="step-text">Refresh the page in 30–60 seconds — the container may be restarting after a crash or deployment</div>
         </div>
         <div class="step-item">
           <div class="step-number">2</div>
-          <div class="step-text">If this is your application, check deployment logs and container health in your dashboard</div>
+          <div class="step-text">Site owners: check container health, memory limits, and recent deployment logs in your Dokploy dashboard</div>
         </div>
       </div>
 
@@ -73,15 +67,7 @@
       </div>
     </div>
 
-    <div class="page-footer">
-      <div class="footer-links">
-        <a href="https://macm.dev">macm.dev</a>
-        <div class="footer-divider"></div>
-        <a href="https://macm.lk">macm.lk</a>
-      </div>
-      <div class="dev-meta">err:502 • bad_gateway • macm infra</div>
-    </div>
-
+    <div class="dev-meta">macm • err:502 • bad_gateway</div>
   </div>
 
   <script src="/js/particles.js"></script>

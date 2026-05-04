@@ -7,51 +7,44 @@
   <meta name="description" content="This service is temporarily unavailable">
   <link rel="stylesheet" href="/css/style.css">
   <style>
-    /* Extra styling specific to 503 maintenance page */
-    .progress-bar-track {
+    .progress-track {
       width: 100%;
-      height: 4px;
-      background: rgba(15, 23, 42, 0.5);
+      height: 3px;
+      background: rgba(15, 23, 42, 0.4);
       border-radius: 100px;
       overflow: hidden;
-      margin-bottom: 2rem;
+      margin-bottom: 1.75rem;
     }
-
-    .progress-bar-fill {
+    .progress-fill {
       height: 100%;
       width: 65%;
       border-radius: 100px;
       background: linear-gradient(90deg, var(--blue-700), var(--blue-400), var(--cyan-400));
       background-size: 200% 100%;
-      animation: progressShimmer 3s ease-in-out infinite;
+      animation: shimmer 3s ease-in-out infinite;
     }
-
-    @keyframes progressShimmer {
+    @keyframes shimmer {
       0% { background-position: 200% 0; }
       100% { background-position: -200% 0; }
     }
-
-    .countdown-text {
+    .progress-label {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       color: var(--text-muted);
-      margin-top: -1.5rem;
-      margin-bottom: 1.5rem;
+      margin-top: -1.25rem;
+      margin-bottom: 1.25rem;
       text-align: right;
       letter-spacing: 0.5px;
     }
   </style>
 </head>
 <body>
-  <!-- Background layers -->
-  <canvas id="particles-canvas"></canvas>
-  <div class="bg-grid"></div>
-  <div class="bg-glow bg-glow-1"></div>
-  <div class="bg-glow bg-glow-2"></div>
-  <div class="bg-glow bg-glow-3"></div>
+  <!-- Space background -->
+  <canvas id="space-canvas"></canvas>
+  <div class="bg-nebula bg-nebula-1"></div>
+  <div class="bg-nebula bg-nebula-2"></div>
 
   <div class="page-wrapper">
-
     <div class="error-code-hero">
       <span class="error-code-number" data-code="503">503</span>
     </div>
@@ -69,30 +62,27 @@
 
       <h1 class="error-title">We're Upgrading Things</h1>
       <p class="error-subtitle">
-        This service is temporarily offline while we perform planned infrastructure upgrades.
-        We're improving performance, security, and reliability — it'll be worth the wait.
+        This service has been temporarily taken offline for planned infrastructure work.
+        We're applying security patches, upgrading dependencies, and optimizing performance
+        to keep your applications running smoothly. This is a controlled operation and
+        your data is completely safe.
       </p>
 
-      <div class="progress-bar-track">
-        <div class="progress-bar-fill"></div>
+      <div class="progress-track">
+        <div class="progress-fill"></div>
       </div>
-      <div class="countdown-text">Maintenance in progress...</div>
+      <div class="progress-label">Maintenance in progress...</div>
 
       <div class="info-grid">
         <div class="info-box">
           <span class="info-box-icon">🔧</span>
-          <div class="info-box-title">What's Happening</div>
-          <div class="info-box-value">Routine infrastructure maintenance — security patches, dependency updates, and optimization</div>
+          <div class="info-box-title">Scope</div>
+          <div class="info-box-value">Security patches, runtime updates, and infrastructure optimization for this node</div>
         </div>
         <div class="info-box">
           <span class="info-box-icon">⏰</span>
-          <div class="info-box-title">Estimated Downtime</div>
-          <div class="info-box-value">Most maintenance windows are completed within 15–30 minutes</div>
-        </div>
-        <div class="info-box">
-          <span class="info-box-icon">🔔</span>
-          <div class="info-box-title">Stay Notified</div>
-          <div class="info-box-value">Follow our status updates at macm.dev for real-time progress</div>
+          <div class="info-box-title">Expected Duration</div>
+          <div class="info-box-value">Most maintenance windows complete within 15–30 minutes</div>
         </div>
       </div>
 
@@ -102,15 +92,7 @@
       </div>
     </div>
 
-    <div class="page-footer">
-      <div class="footer-links">
-        <a href="https://macm.dev">macm.dev</a>
-        <div class="footer-divider"></div>
-        <a href="https://macm.lk">macm.lk</a>
-      </div>
-      <div class="dev-meta">err:503 • service_unavailable • macm infra</div>
-    </div>
-
+    <div class="dev-meta">macm • err:503 • service_unavailable</div>
   </div>
 
   <script src="/js/particles.js"></script>
