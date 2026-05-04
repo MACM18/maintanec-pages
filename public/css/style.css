@@ -1,16 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ========================================
+   MACM Infrastructure Error Pages
+   Design System v2.0
+   ======================================== */
 
 :root {
-  --bg-dark: #050b14;
-  --bg-gradient-start: #081121;
-  --bg-gradient-end: #030810;
-  --primary-blue: #0ea5e9;
-  --primary-glow: rgba(14, 165, 233, 0.5);
-  --accent-blue: #38bdf8;
-  --text-primary: #f8fafc;
+  --bg-dark: #04070d;
+  --bg-surface: #0a1120;
+  --bg-elevated: #0f1a2e;
+
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
+
+  --cyan-400: #22d3ee;
+  --cyan-500: #06b6d4;
+
+  --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
-  --glass-bg: rgba(15, 23, 42, 0.4);
-  --glass-border: rgba(56, 189, 248, 0.2);
+  --text-tertiary: #64748b;
+  --text-muted: #475569;
+
+  --glass-bg: rgba(10, 17, 32, 0.6);
+  --glass-border: rgba(59, 130, 246, 0.15);
+  --glass-border-hover: rgba(59, 130, 246, 0.3);
+
+  --glow-primary: rgba(59, 130, 246, 0.4);
+  --glow-soft: rgba(59, 130, 246, 0.15);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
 }
 
 * {
@@ -19,10 +48,13 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: var(--bg-dark);
-  background: radial-gradient(circle at top right, #1e3a8a 0%, var(--bg-gradient-start) 40%, var(--bg-gradient-end) 100%);
   color: var(--text-primary);
   min-height: 100vh;
   display: flex;
@@ -33,135 +65,524 @@ body {
   position: relative;
 }
 
-/* Subtle animated background elements */
-body::before, body::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
+/* ========================================
+   Animated Background
+   ======================================== */
+.bg-grid {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
-  animation: float 20s infinite ease-in-out alternate;
+  background-image:
+    linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
 }
 
-body::before {
-  width: 400px;
-  height: 400px;
-  background: rgba(14, 165, 233, 0.15);
-  top: -100px;
+.bg-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-glow-1 {
+  width: 600px;
+  height: 600px;
+  background: rgba(59, 130, 246, 0.08);
+  top: -200px;
+  right: -100px;
+  animation: drift1 25s infinite ease-in-out alternate;
+}
+
+.bg-glow-2 {
+  width: 500px;
+  height: 500px;
+  background: rgba(6, 182, 212, 0.06);
+  bottom: -200px;
   left: -100px;
+  animation: drift2 30s infinite ease-in-out alternate;
 }
 
-body::after {
-  width: 300px;
-  height: 300px;
-  background: rgba(56, 189, 248, 0.1);
-  bottom: -50px;
-  right: -50px;
-  animation-delay: -5s;
+.bg-glow-3 {
+  width: 350px;
+  height: 350px;
+  background: rgba(99, 102, 241, 0.07);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 8s infinite ease-in-out;
 }
 
-@keyframes float {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(30px, 50px); }
+@keyframes drift1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-80px, 60px) scale(1.1); }
+  100% { transform: translate(40px, -40px) scale(0.9); }
 }
 
-.container {
+@keyframes drift2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, -80px) scale(1.15); }
+  100% { transform: translate(-30px, 30px) scale(0.95); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+}
+
+/* ========================================
+   Layout
+   ======================================== */
+.page-wrapper {
   position: relative;
   z-index: 10;
-  max-width: 600px;
-  width: 90%;
-  text-align: center;
-  padding: 3rem;
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--glass-border);
-  border-radius: 24px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  transform: translateY(20px);
-  opacity: 0;
-  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  width: 100%;
+  max-width: 720px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
 }
 
-@keyframes fadeIn {
+/* ========================================
+   Error Code Hero
+   ======================================== */
+.error-code-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.error-code-number {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: clamp(6rem, 18vw, 12rem);
+  line-height: 1;
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.25) 0%, rgba(59, 130, 246, 0.03) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  user-select: none;
+  position: relative;
+}
+
+.error-code-number::after {
+  content: attr(data-code);
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  background: linear-gradient(135deg, var(--blue-400), var(--cyan-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0;
+  animation: glitch-reveal 4s infinite;
+}
+
+@keyframes glitch-reveal {
+  0%, 90%, 100% { opacity: 0; transform: translate(0, 0); }
+  92% { opacity: 0.8; transform: translate(2px, -1px); }
+  94% { opacity: 0; transform: translate(-2px, 1px); }
+  96% { opacity: 0.6; transform: translate(1px, 2px); }
+  98% { opacity: 0; }
+}
+
+/* ========================================
+   Main Content Card
+   ======================================== */
+.error-card {
+  width: 100%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 3rem 2.5rem;
+  text-align: center;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.02),
+    0 20px 50px -15px rgba(0, 0, 0, 0.5),
+    0 0 80px -20px var(--glow-soft);
+  transform: translateY(30px);
+  opacity: 0;
+  animation: cardIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.error-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--blue-400), transparent);
+  opacity: 0.4;
+}
+
+@keyframes cardIn {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+/* ========================================
+   Brand
+   ======================================== */
 .brand {
-  margin-bottom: 2rem;
-  letter-spacing: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.brand-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--blue-500), var(--blue-700));
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 800;
-  font-size: 1.5rem;
-  background: linear-gradient(135deg, var(--text-primary), var(--accent-blue));
+  font-size: 0.75rem;
+  color: white;
+  box-shadow: 0 0 12px var(--glow-primary);
+}
+
+.brand-text {
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+/* ========================================
+   Typography
+   ======================================== */
+.error-title {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--blue-200) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  display: inline-block;
-  text-transform: uppercase;
+  background-clip: text;
 }
 
-.error-title {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.error-desc {
-  font-size: 1.125rem;
+.error-subtitle {
+  font-size: 1rem;
+  font-weight: 400;
   color: var(--text-secondary);
-  margin-bottom: 2.5rem;
-  line-height: 1.6;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ========================================
+   Info Boxes
+   ======================================== */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.info-box {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.info-box:hover {
+  border-color: var(--glass-border-hover);
+  background: rgba(15, 23, 42, 0.7);
+  transform: translateY(-1px);
+}
+
+.info-box-icon {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.info-box-title {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.info-box-value {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ========================================
+   Steps / Tips
+   ======================================== */
+.steps-list {
+  text-align: left;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 23, 42, 0.3);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(59, 130, 246, 0.05);
+  transition: border-color 0.2s;
+}
+
+.step-item:hover {
+  border-color: rgba(59, 130, 246, 0.15);
+}
+
+.step-number {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-600), var(--blue-800));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--blue-100);
+  margin-top: 1px;
+}
+
+.step-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ========================================
+   Buttons
+   ======================================== */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
 }
 
 .btn {
-  display: inline-block;
-  padding: 0.875rem 2rem;
-  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--text-primary);
   text-decoration: none;
-  background: rgba(14, 165, 233, 0.1);
-  border: 1px solid var(--primary-blue);
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 15px var(--primary-glow);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-.btn:hover {
-  background: var(--primary-blue);
-  box-shadow: 0 0 25px var(--primary-glow);
+.btn-primary {
+  background: linear-gradient(135deg, var(--blue-600), var(--blue-700));
+  box-shadow:
+    0 0 20px rgba(59, 130, 246, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary:hover {
+  box-shadow:
+    0 0 35px rgba(59, 130, 246, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
 }
 
-.footer {
-  margin-top: 2rem;
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+.btn-secondary {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--glass-border);
 }
 
-.footer a {
-  color: var(--text-secondary);
+.btn-secondary:hover {
+  border-color: var(--glass-border-hover);
+  background: rgba(15, 23, 42, 0.8);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+.page-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  opacity: 0;
+  animation: fadeUp 0.6s ease 0.6s forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+  }
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.footer-links a {
+  font-size: 0.8rem;
+  color: var(--text-muted);
   text-decoration: none;
   transition: color 0.2s;
+  font-weight: 500;
 }
 
-.footer a:hover {
-  color: var(--accent-blue);
+.footer-links a:hover {
+  color: var(--blue-400);
 }
 
-/* Tiny error code for devs */
-.dev-code {
-  position: absolute;
-  bottom: 10px;
-  right: 15px;
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.15);
-  font-family: monospace;
+.footer-divider {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  opacity: 0.5;
+}
+
+/* Error code - subtle for devs */
+.dev-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  color: rgba(148, 163, 184, 0.2);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+  user-select: all;
+}
+
+/* ========================================
+   Particle Canvas
+   ======================================== */
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
   pointer-events: none;
+}
+
+/* ========================================
+   Status Indicator
+   ======================================== */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: blink 2s infinite;
+}
+
+.status-dot.red {
+  background: #ef4444;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
+}
+
+.status-dot.amber {
+  background: #f59e0b;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+}
+
+.status-dot.green {
+  background: #22c55e;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 600px) {
+  .error-card {
+    padding: 2rem 1.5rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    justify-content: center;
+  }
+
+  .page-wrapper {
+    padding: 1.25rem;
+  }
 }

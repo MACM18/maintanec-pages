@@ -3,21 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>System Status | MACM</title>
+  <title>MACM Infrastructure</title>
+  <meta name="description" content="MACM managed infrastructure node">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <div class="container">
-    <div class="brand">MACM</div>
-    <h1 class="error-title">Systems Online</h1>
-    <p class="error-desc">Our infrastructure is currently operating normally, but it looks like you've reached a direct node without a specific destination.</p>
-    <a href="https://macm.dev" class="btn">Return to MACM.dev</a>
-    
-    <div class="footer">
-      <a href="https://macm.dev">macm.dev</a> &bull;
-      <a href="https://macm.lk">macm.lk</a>
+  <!-- Background layers -->
+  <canvas id="particles-canvas"></canvas>
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <div class="page-wrapper">
+
+    <div class="error-card">
+      <div class="brand">
+        <div class="brand-logo">M</div>
+        <span class="brand-text">MACM</span>
+      </div>
+
+      <div class="status-indicator">
+        <span class="status-dot green"></span>
+        All Systems Operational
+      </div>
+
+      <h1 class="error-title">Infrastructure Node Active</h1>
+      <p class="error-subtitle">
+        You've reached a MACM infrastructure endpoint that's running normally.
+        This node is part of our distributed hosting network and doesn't serve public content directly.
+      </p>
+
+      <div class="info-grid">
+        <div class="info-box">
+          <span class="info-box-icon">🌐</span>
+          <div class="info-box-title">Network</div>
+          <div class="info-box-value">MACM Edge Network</div>
+        </div>
+        <div class="info-box">
+          <span class="info-box-icon">🛡️</span>
+          <div class="info-box-title">Status</div>
+          <div class="info-box-value">Healthy &amp; Protected</div>
+        </div>
+        <div class="info-box">
+          <span class="info-box-icon">⚡</span>
+          <div class="info-box-title">Region</div>
+          <div class="info-box-value">Auto-detected</div>
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <a href="https://macm.dev" class="btn btn-primary">Visit MACM.dev</a>
+        <a href="https://macm.lk" class="btn btn-secondary">Visit MACM.lk</a>
+      </div>
     </div>
+
+    <div class="page-footer">
+      <div class="footer-links">
+        <a href="https://macm.dev">macm.dev</a>
+        <div class="footer-divider"></div>
+        <a href="https://macm.lk">macm.lk</a>
+        <div class="footer-divider"></div>
+        <a href="https://macm.dev">Managed Infrastructure</a>
+      </div>
+      <div class="dev-meta">node:index • http 200 • macm infra</div>
+    </div>
+
   </div>
-  <div class="dev-code">200:INDEX</div>
+
+  <script src="/js/particles.js"></script>
 </body>
 </html>

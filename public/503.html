@@ -3,21 +3,116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>System Maintenance | MACM</title>
+  <title>Service Unavailable | MACM</title>
+  <meta name="description" content="This service is temporarily unavailable">
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* Extra styling specific to 503 maintenance page */
+    .progress-bar-track {
+      width: 100%;
+      height: 4px;
+      background: rgba(15, 23, 42, 0.5);
+      border-radius: 100px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 65%;
+      border-radius: 100px;
+      background: linear-gradient(90deg, var(--blue-700), var(--blue-400), var(--cyan-400));
+      background-size: 200% 100%;
+      animation: progressShimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes progressShimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .countdown-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: -1.5rem;
+      margin-bottom: 1.5rem;
+      text-align: right;
+      letter-spacing: 0.5px;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <div class="brand">MACM</div>
-    <h1 class="error-title">System Maintenance</h1>
-    <p class="error-desc">We are currently performing scheduled maintenance to upgrade our infrastructure. We'll be back online shortly.</p>
-    <a href="https://macm.dev" class="btn">Check Status</a>
-    
-    <div class="footer">
-      <a href="https://macm.dev">macm.dev</a> &bull;
-      <a href="https://macm.lk">macm.lk</a>
+  <!-- Background layers -->
+  <canvas id="particles-canvas"></canvas>
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <div class="page-wrapper">
+
+    <div class="error-code-hero">
+      <span class="error-code-number" data-code="503">503</span>
     </div>
+
+    <div class="error-card">
+      <div class="brand">
+        <div class="brand-logo">M</div>
+        <span class="brand-text">MACM</span>
+      </div>
+
+      <div class="status-indicator">
+        <span class="status-dot amber"></span>
+        Scheduled Maintenance
+      </div>
+
+      <h1 class="error-title">We're Upgrading Things</h1>
+      <p class="error-subtitle">
+        This service is temporarily offline while we perform planned infrastructure upgrades.
+        We're improving performance, security, and reliability — it'll be worth the wait.
+      </p>
+
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill"></div>
+      </div>
+      <div class="countdown-text">Maintenance in progress...</div>
+
+      <div class="info-grid">
+        <div class="info-box">
+          <span class="info-box-icon">🔧</span>
+          <div class="info-box-title">What's Happening</div>
+          <div class="info-box-value">Routine infrastructure maintenance — security patches, dependency updates, and optimization</div>
+        </div>
+        <div class="info-box">
+          <span class="info-box-icon">⏰</span>
+          <div class="info-box-title">Estimated Downtime</div>
+          <div class="info-box-value">Most maintenance windows are completed within 15–30 minutes</div>
+        </div>
+        <div class="info-box">
+          <span class="info-box-icon">🔔</span>
+          <div class="info-box-title">Stay Notified</div>
+          <div class="info-box-value">Follow our status updates at macm.dev for real-time progress</div>
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <button onclick="window.location.reload()" class="btn btn-primary">⟳ Check Again</button>
+        <a href="https://macm.dev" class="btn btn-secondary">MACM Status</a>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="footer-links">
+        <a href="https://macm.dev">macm.dev</a>
+        <div class="footer-divider"></div>
+        <a href="https://macm.lk">macm.lk</a>
+      </div>
+      <div class="dev-meta">err:503 • service_unavailable • macm infra</div>
+    </div>
+
   </div>
-  <div class="dev-code">ERR:503_SERVICE_UNAVAILABLE</div>
+
+  <script src="/js/particles.js"></script>
 </body>
 </html>

@@ -3,21 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Connection Interrupted | MACM</title>
+  <title>Bad Gateway | MACM</title>
+  <meta name="description" content="A gateway error has occurred">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <div class="container">
-    <div class="brand">MACM</div>
-    <h1 class="error-title">Connection Interrupted</h1>
-    <p class="error-desc">There was a communication error between our servers. Please try refreshing the page in a few moments.</p>
-    <button onclick="window.location.reload()" class="btn">Refresh Page</button>
-    
-    <div class="footer">
-      <a href="https://macm.dev">macm.dev</a> &bull;
-      <a href="https://macm.lk">macm.lk</a>
+  <!-- Background layers -->
+  <canvas id="particles-canvas"></canvas>
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <div class="page-wrapper">
+
+    <div class="error-code-hero">
+      <span class="error-code-number" data-code="502">502</span>
     </div>
+
+    <div class="error-card">
+      <div class="brand">
+        <div class="brand-logo">M</div>
+        <span class="brand-text">MACM</span>
+      </div>
+
+      <div class="status-indicator">
+        <span class="status-dot red"></span>
+        Gateway Communication Failure
+      </div>
+
+      <h1 class="error-title">Upstream Connection Failed</h1>
+      <p class="error-subtitle">
+        Our edge server received an invalid response from the upstream application server.
+        This typically means the backend service is temporarily unreachable, restarting, or overloaded.
+      </p>
+
+      <div class="info-grid">
+        <div class="info-box">
+          <span class="info-box-icon">🔗</span>
+          <div class="info-box-title">Cause</div>
+          <div class="info-box-value">The reverse proxy couldn't establish a valid connection to the origin server</div>
+        </div>
+        <div class="info-box">
+          <span class="info-box-icon">🔄</span>
+          <div class="info-box-title">Auto-Recovery</div>
+          <div class="info-box-value">Health checks run every 30s — the backend will be restored automatically</div>
+        </div>
+        <div class="info-box">
+          <span class="info-box-icon">📊</span>
+          <div class="info-box-title">Impact</div>
+          <div class="info-box-value">Only this specific application is affected — other MACM services are unimpacted</div>
+        </div>
+      </div>
+
+      <div class="steps-list">
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <div class="step-text">Refresh the page — the application may have restarted and recovered already</div>
+        </div>
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <div class="step-text">If this is your application, check deployment logs and container health in your dashboard</div>
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <button onclick="window.location.reload()" class="btn btn-primary">⟳ Refresh Page</button>
+        <a href="https://macm.dev" class="btn btn-secondary">MACM Homepage</a>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="footer-links">
+        <a href="https://macm.dev">macm.dev</a>
+        <div class="footer-divider"></div>
+        <a href="https://macm.lk">macm.lk</a>
+      </div>
+      <div class="dev-meta">err:502 • bad_gateway • macm infra</div>
+    </div>
+
   </div>
-  <div class="dev-code">ERR:502_BAD_GATEWAY</div>
+
+  <script src="/js/particles.js"></script>
 </body>
 </html>
