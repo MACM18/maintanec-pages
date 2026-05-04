@@ -3,98 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Service Unavailable | MACM</title>
-  <meta name="description" content="This service is temporarily unavailable">
+  <title>503 — Maintenance | MACM</title>
   <link rel="stylesheet" href="/css/style.css">
   <style>
-    .progress-track {
-      width: 100%;
-      height: 3px;
-      background: rgba(15, 23, 42, 0.4);
-      border-radius: 100px;
-      overflow: hidden;
-      margin-bottom: 1.75rem;
-    }
-    .progress-fill {
-      height: 100%;
-      width: 65%;
-      border-radius: 100px;
-      background: linear-gradient(90deg, var(--blue-700), var(--blue-400), var(--cyan-400));
-      background-size: 200% 100%;
-      animation: shimmer 3s ease-in-out infinite;
-    }
-    @keyframes shimmer {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-    .progress-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--text-muted);
-      margin-top: -1.25rem;
-      margin-bottom: 1.25rem;
-      text-align: right;
-      letter-spacing: 0.5px;
-    }
+    .progress { width: 100%; height: 3px; background: rgba(255,255,255,0.04); border-radius: 99px; overflow: hidden; margin-bottom: 1.75rem; }
+    .progress-bar { height: 100%; width: 60%; border-radius: 99px; background: linear-gradient(90deg, #1d4ed8, #3b82f6, #22d3ee); background-size: 200% 100%; animation: slide 2.5s ease-in-out infinite; }
+    @keyframes slide { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
   </style>
 </head>
 <body>
-  <!-- Space background -->
-  <canvas id="space-canvas"></canvas>
-  <div class="bg-nebula bg-nebula-1"></div>
-  <div class="bg-nebula bg-nebula-2"></div>
-
-  <div class="page-wrapper">
-    <div class="error-code-hero">
-      <span class="error-code-number" data-code="503">503</span>
-    </div>
-
-    <div class="error-card">
+  <div class="page">
+    <div class="card">
       <div class="brand">
-        <div class="brand-logo">M</div>
-        <span class="brand-text">MACM</span>
+        <div class="brand-icon">M</div>
+        <span>MACM</span>
       </div>
 
-      <div class="status-indicator">
-        <span class="status-dot amber"></span>
-        Scheduled Maintenance
+      <div class="status"><span class="dot amber"></span> Maintenance</div>
+
+      <h1>We'll Be Right Back</h1>
+      <p class="desc">This service is undergoing scheduled maintenance. We're improving performance and security.</p>
+
+      <div class="progress"><div class="progress-bar"></div></div>
+
+      <div class="actions">
+        <button onclick="location.reload()" class="btn btn-primary">⟳ Check Again</button>
+        <a href="https://macm.dev" class="btn btn-ghost">MACM Status</a>
       </div>
 
-      <h1 class="error-title">We're Upgrading Things</h1>
-      <p class="error-subtitle">
-        This service has been temporarily taken offline for planned infrastructure work.
-        We're applying security patches, upgrading dependencies, and optimizing performance
-        to keep your applications running smoothly. This is a controlled operation and
-        your data is completely safe.
-      </p>
-
-      <div class="progress-track">
-        <div class="progress-fill"></div>
-      </div>
-      <div class="progress-label">Maintenance in progress...</div>
-
-      <div class="info-grid">
-        <div class="info-box">
-          <span class="info-box-icon">🔧</span>
-          <div class="info-box-title">Scope</div>
-          <div class="info-box-value">Security patches, runtime updates, and infrastructure optimization for this node</div>
-        </div>
-        <div class="info-box">
-          <span class="info-box-icon">⏰</span>
-          <div class="info-box-title">Expected Duration</div>
-          <div class="info-box-value">Most maintenance windows complete within 15–30 minutes</div>
-        </div>
-      </div>
-
-      <div class="btn-group">
-        <button onclick="window.location.reload()" class="btn btn-primary">⟳ Check Again</button>
-        <a href="https://macm.dev" class="btn btn-secondary">MACM Status</a>
-      </div>
+      <div class="err-code">503</div>
     </div>
-
-    <div class="dev-meta">macm • err:503 • service_unavailable</div>
+    <div class="meta">macm • service_unavailable</div>
   </div>
-
-  <script src="/js/particles.js"></script>
 </body>
 </html>

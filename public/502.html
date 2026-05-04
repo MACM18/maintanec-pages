@@ -3,73 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bad Gateway | MACM</title>
-  <meta name="description" content="A gateway error has occurred">
+  <title>502 — Bad Gateway | MACM</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <!-- Space background -->
-  <canvas id="space-canvas"></canvas>
-  <div class="bg-nebula bg-nebula-1"></div>
-  <div class="bg-nebula bg-nebula-2"></div>
-
-  <div class="page-wrapper">
-    <div class="error-code-hero">
-      <span class="error-code-number" data-code="502">502</span>
-    </div>
-
-    <div class="error-card">
+  <div class="page">
+    <div class="card">
       <div class="brand">
-        <div class="brand-logo">M</div>
-        <span class="brand-text">MACM</span>
+        <div class="brand-icon">M</div>
+        <span>MACM</span>
       </div>
 
-      <div class="status-indicator">
-        <span class="status-dot red"></span>
-        Gateway Communication Failure
+      <div class="status"><span class="dot red"></span> Gateway Error</div>
+
+      <h1>Upstream Unreachable</h1>
+      <p class="desc">The application server didn't respond. It may be restarting or temporarily overloaded. Try again shortly.</p>
+
+      <div class="actions">
+        <button onclick="location.reload()" class="btn btn-primary">⟳ Refresh</button>
+        <a href="https://macm.dev" class="btn btn-ghost">MACM Homepage</a>
       </div>
 
-      <h1 class="error-title">Upstream Connection Failed</h1>
-      <p class="error-subtitle">
-        Our reverse proxy received an invalid or empty response from the upstream application server.
-        This usually means the application container has crashed, is still starting up after a deployment,
-        or has run out of memory. Only this specific application is affected — other services on the
-        MACM network continue to operate normally.
-      </p>
-
-      <div class="info-grid">
-        <div class="info-box">
-          <span class="info-box-icon">🔗</span>
-          <div class="info-box-title">What Failed</div>
-          <div class="info-box-value">The proxy could not establish a valid TCP connection to the origin container</div>
-        </div>
-        <div class="info-box">
-          <span class="info-box-icon">🔄</span>
-          <div class="info-box-title">Auto-Recovery</div>
-          <div class="info-box-value">Health checks run every 30 seconds — failed containers are restarted automatically</div>
-        </div>
-      </div>
-
-      <div class="steps-list">
-        <div class="step-item">
-          <div class="step-number">1</div>
-          <div class="step-text">Refresh the page in 30–60 seconds — the container may be restarting after a crash or deployment</div>
-        </div>
-        <div class="step-item">
-          <div class="step-number">2</div>
-          <div class="step-text">Site owners: check container health, memory limits, and recent deployment logs in your Dokploy dashboard</div>
-        </div>
-      </div>
-
-      <div class="btn-group">
-        <button onclick="window.location.reload()" class="btn btn-primary">⟳ Refresh Page</button>
-        <a href="https://macm.dev" class="btn btn-secondary">MACM Homepage</a>
-      </div>
+      <div class="err-code">502</div>
     </div>
-
-    <div class="dev-meta">macm • err:502 • bad_gateway</div>
+    <div class="meta">macm • bad_gateway</div>
   </div>
-
-  <script src="/js/particles.js"></script>
 </body>
 </html>

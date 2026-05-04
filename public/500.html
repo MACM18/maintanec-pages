@@ -3,72 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Internal Server Error | MACM</title>
-  <meta name="description" content="An internal server error has occurred">
+  <title>500 — Server Error | MACM</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <!-- Space background -->
-  <canvas id="space-canvas"></canvas>
-  <div class="bg-nebula bg-nebula-1"></div>
-  <div class="bg-nebula bg-nebula-2"></div>
-
-  <div class="page-wrapper">
-    <div class="error-code-hero">
-      <span class="error-code-number" data-code="500">500</span>
-    </div>
-
-    <div class="error-card">
+  <div class="page">
+    <div class="card">
       <div class="brand">
-        <div class="brand-logo">M</div>
-        <span class="brand-text">MACM</span>
+        <div class="brand-icon">M</div>
+        <span>MACM</span>
       </div>
 
-      <div class="status-indicator">
-        <span class="status-dot red"></span>
-        Internal Error Detected
+      <div class="status"><span class="dot red"></span> Internal Error</div>
+
+      <h1>Something Went Wrong</h1>
+      <p class="desc">The server encountered an unexpected error. Our team has been notified and is working on a fix.</p>
+
+      <div class="actions">
+        <button onclick="location.reload()" class="btn btn-primary">⟳ Retry</button>
+        <a href="https://macm.dev" class="btn btn-ghost">MACM Homepage</a>
       </div>
 
-      <h1 class="error-title">Something Broke on Our End</h1>
-      <p class="error-subtitle">
-        The application server encountered an unhandled exception while processing your request.
-        This is not caused by anything you did — it's a bug or misconfiguration on the server side.
-        Our monitoring pipeline has already captured the error trace and alerted the engineering team.
-      </p>
-
-      <div class="info-grid">
-        <div class="info-box">
-          <span class="info-box-icon">🔍</span>
-          <div class="info-box-title">Root Cause</div>
-          <div class="info-box-value">An uncaught exception or a crashed worker process on the application server</div>
-        </div>
-        <div class="info-box">
-          <span class="info-box-icon">⏱️</span>
-          <div class="info-box-title">Resolution</div>
-          <div class="info-box-value">Auto-restart is in progress — most crashes recover within 60 seconds</div>
-        </div>
-      </div>
-
-      <div class="steps-list">
-        <div class="step-item">
-          <div class="step-number">1</div>
-          <div class="step-text">Wait a moment and try refreshing — the server may have already recovered</div>
-        </div>
-        <div class="step-item">
-          <div class="step-number">2</div>
-          <div class="step-text">If you're a site owner, check your application logs and recent deployments for breaking changes</div>
-        </div>
-      </div>
-
-      <div class="btn-group">
-        <button onclick="window.location.reload()" class="btn btn-primary">⟳ Retry Request</button>
-        <a href="https://macm.dev" class="btn btn-secondary">MACM Homepage</a>
-      </div>
+      <div class="err-code">500</div>
     </div>
-
-    <div class="dev-meta">macm • err:500 • internal_server_error</div>
+    <div class="meta">macm • internal_server_error</div>
   </div>
-
-  <script src="/js/particles.js"></script>
 </body>
 </html>

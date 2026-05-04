@@ -4,49 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MACM Infrastructure</title>
-  <meta name="description" content="MACM managed infrastructure node — active and operational">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <!-- Space background -->
-  <canvas id="space-canvas"></canvas>
-  <div class="bg-nebula bg-nebula-1"></div>
-  <div class="bg-nebula bg-nebula-2"></div>
-
-  <div class="page-wrapper">
-    <div class="error-card">
+  <div class="page">
+    <div class="card">
       <div class="brand">
-        <div class="brand-logo">M</div>
-        <span class="brand-text">MACM</span>
+        <div class="brand-icon">M</div>
+        <span>MACM</span>
       </div>
 
-      <div class="status-indicator">
-        <span class="status-dot green"></span>
-        All Systems Operational
-      </div>
+      <div class="status"><span class="dot green"></span> Systems Operational</div>
 
-      <h1 class="error-title">Infrastructure Node Active</h1>
-      <p class="error-subtitle">
-        You've reached a MACM infrastructure endpoint directly. This node is part of our distributed
-        hosting network and serves as a reverse proxy for managed applications. It doesn't host
-        public-facing content on its own — it routes traffic to the correct destination.
-      </p>
+      <h1>Infrastructure Node</h1>
+      <p class="desc">You've reached a MACM edge node directly. This endpoint routes traffic to managed applications and doesn't serve content on its own.</p>
 
-      <p class="error-subtitle" style="margin-top: -0.5rem;">
-        If you're a site owner and seeing this page, your application may not be configured to receive
-        traffic on this domain yet. Check your Dokploy dashboard to verify your domain bindings
-        and deployment status.
-      </p>
-
-      <div class="btn-group">
+      <div class="actions">
         <a href="https://macm.dev" class="btn btn-primary">Visit MACM.dev</a>
-        <a href="https://macm.lk" class="btn btn-secondary">Visit MACM.lk</a>
+        <a href="https://macm.lk" class="btn btn-ghost">Visit MACM.lk</a>
       </div>
     </div>
-
-    <div class="dev-meta">macm • edge-node • default</div>
+    <div class="meta">macm • edge-node</div>
   </div>
-
-  <script src="/js/particles.js"></script>
 </body>
 </html>

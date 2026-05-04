@@ -3,63 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page Not Found | MACM</title>
-  <meta name="description" content="The requested resource could not be found on this server">
+  <title>404 — Not Found | MACM</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <!-- Space background -->
-  <canvas id="space-canvas"></canvas>
-  <div class="bg-nebula bg-nebula-1"></div>
-  <div class="bg-nebula bg-nebula-2"></div>
-
-  <div class="page-wrapper">
-    <div class="error-code-hero">
-      <span class="error-code-number" data-code="404">404</span>
-    </div>
-
-    <div class="error-card">
+  <div class="page">
+    <div class="card">
       <div class="brand">
-        <div class="brand-logo">M</div>
-        <span class="brand-text">MACM</span>
+        <div class="brand-icon">M</div>
+        <span>MACM</span>
       </div>
 
-      <div class="status-indicator">
-        <span class="status-dot amber"></span>
-        Resource Not Found
-      </div>
+      <div class="status"><span class="dot amber"></span> Not Found</div>
 
-      <h1 class="error-title">This Page Doesn't Exist</h1>
-      <p class="error-subtitle">
-        The URL you requested doesn't match any resource on this server. This could mean the page was
-        moved to a new location, the link you followed is outdated, or the content was permanently
-        removed during a recent deployment.
-      </p>
+      <h1>Page Not Found</h1>
+      <p class="desc">The resource you requested doesn't exist on this server. It may have been moved or removed.</p>
 
-      <div class="steps-list">
-        <div class="step-item">
-          <div class="step-number">1</div>
-          <div class="step-text">Double-check the URL for typos, extra slashes, or incorrect casing</div>
-        </div>
-        <div class="step-item">
-          <div class="step-number">2</div>
-          <div class="step-text">If you followed a link from another site, that link may be outdated — try navigating from the homepage instead</div>
-        </div>
-        <div class="step-item">
-          <div class="step-number">3</div>
-          <div class="step-text">Site owners: verify your application routes and static asset paths in your deployment configuration</div>
-        </div>
-      </div>
-
-      <div class="btn-group">
+      <div class="actions">
         <button onclick="history.back()" class="btn btn-primary">← Go Back</button>
-        <a href="https://macm.dev" class="btn btn-secondary">MACM Homepage</a>
+        <a href="https://macm.dev" class="btn btn-ghost">MACM Homepage</a>
       </div>
+
+      <div class="err-code">404</div>
     </div>
-
-    <div class="dev-meta">macm • err:404 • not_found</div>
+    <div class="meta">macm • not_found</div>
   </div>
-
-  <script src="/js/particles.js"></script>
 </body>
 </html>
